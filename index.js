@@ -2,8 +2,9 @@ const http = require('http');
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-  res.write('Oi, HTTP!');
-  res.end(); // tem que sinalizar quando para o response
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'text/html')
+  res.end('<h1>Olá, Este é meu primeiro server com HTML!</h1>')
 });
 
 server.listen(port, () => {
