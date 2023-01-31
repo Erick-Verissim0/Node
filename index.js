@@ -1,21 +1,15 @@
 const http = require('http');
 const url = require('url');
 const port = 3000;
+const fs = require('fs');
 
 const server = http.createServer((req, res) => {
-  const urlInfo = require('url').parse(req.url, true);
-  const name = urlInfo.query.name;
 
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-
-  if (!name) {
-    res.end(
-      '<h1>Preencha o seu nome:</h1><form method="GET"> <input type="text" name=" name"/> <input type="submit" value="enviar"/> </form>'
-    );
-  } else {
-    res.end(`<h1>Seja bem vindo ${name}</h1>`);
-  }
+  fs.readFile('index.html', function (err, data) {
+    res.writeHead(200, {'Content-Type' : 'text-html'})
+    res.write(data)
+    return res.end()
+  })
 });
 
 server.listen(port, () => {
