@@ -14,7 +14,9 @@ const server = http.createServer((req, res) => {
       return res.end();
     });
   } else {
-    fs.writeFile('arquivo.txt', name, function (err, data) {
+    const nameNewFile = name + '\r\n';
+
+    fs.appendFile('arquivo.txt', nameNewFile, function (err, data) {
       res.writeHead(302, {
         Location: '/',
       });
