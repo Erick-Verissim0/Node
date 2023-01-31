@@ -1,17 +1,12 @@
-// event loop é a garantia de que o código vai ser lido de cima para baixo. Tem mais coisas sobre, mas não é para agora.
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
 
-function a() {
-  console.log('Executando a');
-}
-function b() {
-  console.log('Executando b');
-  c();
-  a();
-}
-function c() {
-  console.log('Executando c');
-}
+eventEmitter.on('start', () => {
+  console.log('Durante');
+});
 
-b();
+console.log('Antes');
 
-// irá aparecer "executando b, executando c, executando a. Sequencialmente".
+eventEmitter.emit('start');
+
+console.log('Depois');
