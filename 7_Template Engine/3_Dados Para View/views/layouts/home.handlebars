@@ -1,2 +1,13 @@
+<hp>Header</hp>
 <h1>Olá, {{user.name}} {{user.surname}} </h1>
 
+{{#if approved}}
+    <p>Parabéns, o seu cadastro foi finalizado!</p>
+{{else}}
+    <p>O seu cadastro não foi finalizado, tente novamente mais tarde!</p>
+{{/if}}
+
+{{#if auth}}
+<h3>Este texto só aparece se auth for true</h3>
+{{/if}}
+<p>Rodapé</p>

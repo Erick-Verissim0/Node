@@ -12,11 +12,7 @@ app.get('/', (req, res) => {
     surname: 'Veríssimo',
   };
 
-  const auth = false;
-
-  const approved = false;
-
-  res.render('layouts/home', { user, auth, approved });
+  res.render('layouts/home', { user: user });
 });
 
 app.listen(3000, () => {
