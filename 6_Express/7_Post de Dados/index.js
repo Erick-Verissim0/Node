@@ -5,9 +5,9 @@ const path = require('path');
 
 const basePath = path.join(__dirname); // posso passar um segundo parametro depois do __dirname, que seria o caminho para o arquivo que será chamado
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); // está dizendo que pode ler dados ,ais complexos como objetos json, que são passados no código a baixo. Se por um lado for false, só será lido lido dados simples como strings e arrays.
 
-app.use(express.json());
+app.use(express.json()); // convertendo o que foi enviado no post para json
 
 app.get('/users/add', (req, res) => {
   res.sendFile(`${basePath}/useForm.html`);
